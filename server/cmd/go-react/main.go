@@ -7,8 +7,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/gabriel-caetano/go-react-ama/internal/api"
-	"github.com/gabriel-caetano/go-react-ama/internal/store/pgstore"
+	"github.com/gabriel-caetano/go-react-ama/server/internal/api"
+	"github.com/gabriel-caetano/go-react-ama/server/internal/store/pgstore"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
 )

@@ -1,4 +1,4 @@
-module github.com/gabriel-caetano/go-react-ama
+module github.com/gabriel-caetano/go-react-ama/server
 
 go 1.22.3
 
