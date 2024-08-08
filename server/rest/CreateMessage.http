@@ -1,0 +1,10 @@
+@baseUrl = {{$dotenv BASE_URL}}
+
+# Login
+# @name test
+POST {{baseUrl}}/api/rooms/46a83f70-520c-46e2-99f8-25ec501fc3b1/messages
+Content-Type: application/json
+
+{
+  "message": "This is a test message"
+}
