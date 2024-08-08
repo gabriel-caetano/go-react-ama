@@ -1,0 +1,14 @@
+@baseUrl = {{$dotenv BASE_URL}}
+@adminEmail = {{$dotenv ADMIN_EMAIL}}
+@adminPassword = {{$dotenv ADMIN_PASSWORD}}
+
+# Login
+# @name tokenAPI
+POST {{baseUrl}}/pt-BR/sessions
+Content-Type: application/json
+
+{
+    "email": "{{$adminEmail}}",
+    "password": "{{$adminPassword}}"
+}
+

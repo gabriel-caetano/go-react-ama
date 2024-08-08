@@ -1,0 +1,10 @@
+@baseUrl = {{$dotenv BASE_URL}}
+
+# Login
+# @name test
+POST {{baseUrl}}/api/rooms
+Content-Type: application/json
+
+{
+  "theme": "test"
+}

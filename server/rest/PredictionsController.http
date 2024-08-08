@@ -1,0 +1,32 @@
+@baseUrl = {{$dotenv BASE_URL}}
+@authToken = {{$dotenv ADMIN_TOKEN}}
+
+### load all seasons for a league (1st and 2nd division)
+POST {{baseUrl}}/pt-BR/admin/load-seasons
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "leagueId": 171,
+}
+
+### load data for current season and previous season 2nd division
+POST {{baseUrl}}/pt-BR/admin/load-league-data
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "leagueId": 5,
+  "year": 2024
+}
+
+### Load stats for a season (2nd division round 1 - 38)
+POST {{baseUrl}}/pt-BR/admin/load-stats-by-round
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "leagueId": 11,
+  "year": 2023,
+  "roundOrder": 34
+}

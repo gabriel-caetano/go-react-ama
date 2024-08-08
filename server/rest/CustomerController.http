@@ -1,0 +1,9 @@
+@baseUrl = {{$dotenv BASE_URL}}
+@adminEmail = {{$dotenv ADMIN_EMAIL}}
+@adminPassword = {{$dotenv ADMIN_PASSWORD}}
+@customerToken = {{$dotenv CUSTOMER_TOKEN}}
+# Login
+# @name tokenAPI
+GET {{baseUrl}}/pt-BR/customer
+Content-Type: application/json
+Authorization: Bearer {{customerToken}}

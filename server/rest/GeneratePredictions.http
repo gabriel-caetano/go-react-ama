@@ -1,0 +1,29 @@
+# This file is used to load data and generate predictions for the sistem
+# Run with 'REST Client' extension for VSCode
+
+@baseUrl = {{$dotenv BASE_URL}}
+@authToken = {{$dotenv ADMIN_TOKEN}}
+
+### load stats by round
+POST {{baseUrl}}/pt-BR/admin/load-stats-by-round
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "leagueId": 5,
+  "roundOrder": 17,
+  "year": 2024
+}
+
+### generate predictions by round
+POST {{baseUrl}}/pt-BR/admin/generate-predictions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "leagueId": 5,
+  "roundOrder":18,
+  "seasonYear": 2024
+}
+
+###

@@ -1,0 +1,7 @@
+@baseUrl = {{$dotenv BASE_URL}}
+
+# Login
+# @name test
+GET {{baseUrl}}/
+Content-Type: application/json
+

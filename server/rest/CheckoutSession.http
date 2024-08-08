@@ -1,0 +1,11 @@
+@baseUrl = {{$dotenv BASE_URL}}
+@authToken = {{$dotenv CLIENT_TOKEN}}
+
+@productId = 11
+// 11 = 1 month punter
+
+### get checkout session
+GET {{baseUrl}}/pt-BR/customer/checkout-session/{{productId}}
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
