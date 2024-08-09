@@ -1,14 +1,25 @@
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import amaLogo from "../assets/ama-logo.svg";
+import { createRoom } from "../http/create-room";
 
 export function CreateRoom() {
 	const navigate = useNavigate();
 
-	function handleCreateRoom(data: FormData) {
-		const theme: FormDataEntryValue | null = data.get("theme");
-		if (!theme) console.log("err");
-		else navigate(`/room/${theme}`);
+	async function handleCreateRoom(data: FormData) {
+		const themeData = data.get("theme");
+		if (!themeData) {
+			toast.error("Não é permitido criar uma sala sem nome");
+			return;
+		}
+		const theme = themeData.toString();
+		try {
+			await createRoom({ theme });
+			navigate(`/room/${theme}`);
+		} catch (e) {
+			toast.error("Falha ao criar sala");
+		}
 	}
 	return (
 		<main className="h-screen flex items-center justify-center px-4">

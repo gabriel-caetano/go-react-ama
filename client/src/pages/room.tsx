@@ -13,7 +13,7 @@ export function Room() {
 			navigator.share({ url });
 		} else {
 			navigator.clipboard.writeText(url);
-			toast.info("The room URL was copied to your clipboard");
+			toast.info("O link da sala foi copiado para a area de transferência");
 		}
 	}
 
