@@ -15,10 +15,11 @@ export function CreateRoom() {
 		}
 		const theme = themeData.toString();
 		try {
-			await createRoom({ theme });
-			navigate(`/room/${theme}`);
+			const { roomId } = await createRoom({ theme });
+			navigate(`/room/${roomId}`);
 		} catch (e) {
 			toast.error("Falha ao criar sala");
+			console.log(e);
 		}
 	}
 	return (

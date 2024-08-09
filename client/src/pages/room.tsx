@@ -1,8 +1,10 @@
-import { ArrowRight, ArrowUp, Share2 } from "lucide-react";
+import { Share2 } from "lucide-react";
+import { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import amaLogo from "../assets/ama-logo.svg";
-import { Message } from "../components/message";
+import { CreateMessageForm } from "../components/create-message-form";
+import { Messages } from "../components/messages";
 
 export function Room() {
 	const { roomId } = useParams();
@@ -34,28 +36,10 @@ export function Room() {
 				</button>
 			</div>
 			<div className="h-px w-full bg-zinc-900" />
-			<form className="flex items-center gap-2 bg-zinc-900 p-2 rounded-xl border border-zinc-800 ring-orange-400 ring-offset-2 ring-offset-zinc-950 focus-within:ring-2">
-				<input
-					type="text"
-					name="theme"
-					placeholder="Qual a sua pergunta"
-					autoComplete="off"
-					className="flex-1 text-sm bg-transparent mx-2 outline-none text-zinc-100 placeholder:text-zinc-500"
-				/>
-				<button
-					type="submit"
-					className="bg-orange-400 text-orange-950 px-3 py-1.5 flex items-center rounded-lg font-medium text-sm hover:bg-orange-500 transition-colors"
-				>
-					Criar pergunta
-					<ArrowRight className="size-4" />
-				</button>
-			</form>
-			<ol className="list-decimal list-inside px-3 space-y-8">
-				<Message text={"pergunta 1"} amountOfReactions={0} answered />
-				<Message text={"pergunta 2"} amountOfReactions={0} />
-				<Message text={"pergunta 3"} amountOfReactions={5} />
-				<Message text={"pergunta 4"} amountOfReactions={4} />
-			</ol>
+			<CreateMessageForm />
+			<Suspense fallback={<p>Carregando...</p>}>
+				<Messages />
+			</Suspense>
 		</div>
 	);
 }
