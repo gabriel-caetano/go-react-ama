@@ -1,8 +1,21 @@
-import { ArrowRight, Share2 } from "lucide-react";
+import { ArrowRight, ArrowUp, Share2 } from "lucide-react";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 import amaLogo from "../assets/ama-logo.svg";
+import { Message } from "../components/message";
+
 export function Room() {
 	const { roomId } = useParams();
+
+	function handleShareRoom() {
+		const url = window.location.href.toString();
+		if (navigator.share !== undefined && navigator.canShare()) {
+			navigator.share({ url });
+		} else {
+			navigator.clipboard.writeText(url);
+			toast.info("The room URL was copied to your clipboard");
+		}
+	}
 
 	return (
 		<div className="mx-auto max-w-[640px] flex flex-col gap-6 py-10 px-4">
@@ -13,10 +26,11 @@ export function Room() {
 				</span>
 				<button
 					type="submit"
-					className="bg-zinc-800 text-zinc-300 px-3 py-1.5 flex items-center rounded-lg font-medium text-sm hover:bg-zinc-700 transition-colors"
+					onClick={handleShareRoom}
+					className="ml-auto bg-zinc-800 text-zinc-300 px-3 py-1.5 flex items-center rounded-lg font-medium text-sm hover:bg-zinc-700 transition-colors"
 				>
 					Compartilhar
-					<Share2 className="size-4" />
+					<Share2 className="size-4 pl-1" />
 				</button>
 			</div>
 			<div className="h-px w-full bg-zinc-900" />
@@ -37,7 +51,10 @@ export function Room() {
 				</button>
 			</form>
 			<ol className="list-decimal list-inside px-3 space-y-8">
-				<li>pergunta 1</li>
+				<Message text={"pergunta 1"} amountOfReactions={0} answered />
+				<Message text={"pergunta 2"} amountOfReactions={0} />
+				<Message text={"pergunta 3"} amountOfReactions={5} />
+				<Message text={"pergunta 4"} amountOfReactions={4} />
 			</ol>
 		</div>
 	);
