@@ -2,7 +2,20 @@ interface GetRoomMessagesRequest {
 	roomId: string;
 }
 
-export async function getRoomMessages({ roomId }: GetRoomMessagesRequest) {
+export interface MessageData {
+	id: string;
+	text: string;
+	amountOfReactions: number;
+	answered: boolean;
+}
+
+export interface GetRoomMessagesReturn {
+	messages: MessageData[];
+}
+
+export async function getRoomMessages({
+	roomId,
+}: GetRoomMessagesRequest): Promise<GetRoomMessagesReturn> {
 	const response = await fetch(
 		`${import.meta.env.VITE_APP_API_URL}/rooms/${roomId}/messages`,
 	);

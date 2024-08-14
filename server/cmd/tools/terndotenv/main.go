@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/joho/godotenv"
@@ -22,4 +23,5 @@ func main() {
 	if err := cmd.Run(); err != nil {
 		panic(err)
 	}
+	fmt.Sprintln("Terminou o tern")
 }

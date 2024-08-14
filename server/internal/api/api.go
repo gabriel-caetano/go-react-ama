@@ -79,8 +79,10 @@ const (
 )
 
 type MessageMessageCreated struct {
-	ID      string `json:"id"`
-	Message string `json:"message"`
+	ID            string `json:"id"`
+	Message       string `json:"message"`
+	ReactionCount int64  `json:"reaction_count"`
+	Answered      bool   `json:"answered"`
 }
 
 type Message struct {
@@ -209,8 +211,10 @@ func (h apiHandler) handleCreateRoomMessage(w http.ResponseWriter, r *http.Reque
 		Kind:   MessageKindMessageCreated,
 		RoomID: SafeRoomID.rawID,
 		Value: MessageMessageCreated{
-			ID:      messageID.String(),
-			Message: body.Message,
+			ID:            messageID.String(),
+			Message:       body.Message,
+			ReactionCount: 0,
+			Answered:      false,
 		},
 	})
 }
